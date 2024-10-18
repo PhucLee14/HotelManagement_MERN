@@ -15,6 +15,7 @@ const GuestDetail = () => {
         IDnumber: "",
         dateOfBirth: "",
         guestCategories: "",
+        guestType: "",
     });
     useEffect(() => {
         getData();
@@ -54,6 +55,10 @@ const GuestDetail = () => {
                 <div className="flex py-3 border-b">
                     <p className="font-semibold mr-4">Category: </p>
                     <p className="text-gray-500">{data.guestCategories}</p>
+                </div>
+                <div className="flex py-3 border-b">
+                    <p className="font-semibold mr-4">Type: </p>
+                    <p className="text-gray-500">{data.guestType}</p>
                 </div>
                 <div className="flex py-3 border-b">
                     <p className="font-semibold mr-4">Date Of Birth: </p>

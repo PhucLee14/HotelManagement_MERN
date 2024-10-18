@@ -66,7 +66,10 @@ const createBooking = async (req, res) => {
 };
 
 let editBooking = async (req, res) => {
-    const { roomInteraction, serviceBookings } = req.body;
+    console.log("Dữ liệu nhận được từ client:", req.body);
+    const { roomInteraction, serviceBookings, haveForeignGuest } = req.body;
+    console.log("haveForeignGuest:", haveForeignGuest);
+
     const id = req.params.id;
 
     // Valid room interaction states
@@ -111,6 +114,7 @@ let editBooking = async (req, res) => {
                 { _id: { $in: roomBookingIds } },
                 { $set: { isFree: false } }
             );
+            console.log("nhan phong", haveForeignGuest);
         }
 
         let createdServiceBookings = null;
@@ -128,6 +132,7 @@ let editBooking = async (req, res) => {
                 { _id: { $in: roomBookingIds } },
                 { $set: { isFree: true } }
             );
+            console.log("tra phong", haveForeignGuest);
         }
 
         let updatedBooking = await bookingModel.findByIdAndUpdate(
@@ -136,6 +141,7 @@ let editBooking = async (req, res) => {
                 $set: {
                     roomInteraction: roomInteraction,
                     serviceBookings: createdServiceBookings,
+                    haveForeignGuest: haveForeignGuest,
                 },
             },
             { new: true }
@@ -187,6 +193,17 @@ let editBooking = async (req, res) => {
                 0
             );
 
+            let surchargeForeignPercent = 0;
+
+            console.log(surchargeForeignPercent, haveForeignGuest);
+
+            if (haveForeignGuest) {
+                surchargeForeignPercent = 0.5;
+            }
+
+            const surcharge =
+                (roomCharge + serviceCharge) * surchargeForeignPercent;
+
             //Create a new bill
             bill = await billModel.create({
                 guest: booking.guest,
@@ -194,6 +211,7 @@ let editBooking = async (req, res) => {
                 booking: id,
                 roomCharge: roomCharge,
                 serviceCharge: serviceCharge,
+                surcharge: surcharge,
             });
         }
 

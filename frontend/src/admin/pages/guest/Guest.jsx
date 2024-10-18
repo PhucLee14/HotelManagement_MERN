@@ -96,6 +96,9 @@ const Guest = () => {
                             <th className="text-gray-500 font-medium py-4">
                                 Guest Categories
                             </th>
+                            <th className="text-gray-500 font-medium py-4">
+                                Guest Type
+                            </th>
                             <th className="text-gray-500 font-medium text-center w-1/6">
                                 Action
                             </th>
@@ -120,6 +123,9 @@ const Guest = () => {
                                 </td>
                                 <td className="py-4 text-gray-500">
                                     {guest.guestCategories}
+                                </td>
+                                <td className="py-4 text-gray-500">
+                                    {guest.guestType}
                                 </td>
                                 <td className="py-4 text-gray-500 text-center">
                                     <Link

@@ -16,6 +16,7 @@ const EditGuest = () => {
         IDnumber: "",
         dateOfBirth: "",
         guestCategories: "",
+        guestType: "",
     });
 
     useEffect(() => {
@@ -114,6 +115,19 @@ const EditGuest = () => {
                     >
                         <option value="Normal">Normal</option>
                         <option value="Vip">Vip</option>
+                    </select>
+                </div>
+                <div className="py-2 text-gray-500">
+                    <p className="text-gray-500">Guest Type</p>
+                    <select
+                        name="guestType"
+                        onChange={handleChange}
+                        id=""
+                        className="w-3/4 outline-none rounded-lg p-2 border-gray-300 border mt-2"
+                        defaultValue={guest.guestType}
+                    >
+                        <option value="Comestic">Comestic</option>
+                        <option value="Foreign">Foreign</option>
                     </select>
                 </div>
                 <div className="py-2 text-gray-500">

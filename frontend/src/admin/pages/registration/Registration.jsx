@@ -77,7 +77,6 @@ const Registration = () => {
             (registration) => registration.roomInteraction === filter
         );
         setFilteredRegistrations(filtered);
-        console.log(filtered.length);
         setTotalPages(Math.ceil(filtered.length / 12));
     }, [registrations, filter]);
 
@@ -131,6 +130,9 @@ const Registration = () => {
                             tabIndex={0}
                             className="dropdown-content z-[1] menu shadow bg-base-100 rounded-md w-44 border-2"
                         >
+                            <li onClick={() => handleFilterChange("")}>
+                                <a>Tất cả</a>
+                            </li>
                             <li
                                 onClick={() =>
                                     handleFilterChange("Chưa nhận phòng")

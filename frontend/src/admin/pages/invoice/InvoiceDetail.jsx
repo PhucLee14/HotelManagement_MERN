@@ -34,11 +34,11 @@ const InvoiceDetail = () => {
     };
 
     const calculateTotal = () => {
-        const { roomCharge, serviceCharge, discount } = bill;
+        const { roomCharge, serviceCharge, surcharge, discount } = bill;
         if (guest.guestCategories === "Vip" && discount) {
-            return roomCharge + serviceCharge - discount;
+            return roomCharge + serviceCharge + surcharge - discount;
         }
-        return roomCharge + serviceCharge;
+        return roomCharge + serviceCharge + surcharge;
     };
 
     return isLoading ? (
@@ -77,6 +77,12 @@ const InvoiceDetail = () => {
                             ? formatNumber(bill.serviceCharge)
                             : ""}{" "}
                         VND
+                    </p>
+                </div>
+                <div className="flex py-3 border-b">
+                    <p className="font-semibold mr-4">Surcharge: </p>
+                    <p className="text-gray-500">
+                        {bill.surcharge ? formatNumber(bill.surcharge) : ""} VND
                     </p>
                 </div>
                 {guest.guestCategories === "Vip" && bill.discount && (

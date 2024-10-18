@@ -38,6 +38,7 @@ const RegistrationDetail = () => {
             setBooking(data);
             setGuest(guestData);
             setIsLoading(false);
+            console.log(booking);
         } catch (error) {
             console.error(error);
         }
@@ -130,6 +131,12 @@ const RegistrationDetail = () => {
                 <div className="flex py-3 border-b">
                     <p className="font-semibold mr-4">Room Status: </p>
                     <p className="text-gray-500">{booking.roomInteraction}</p>
+                </div>
+                <div className="flex py-3 border-b">
+                    <p className="font-semibold mr-4">Have Foreign Guest: </p>
+                    <p className="text-gray-500">
+                        {booking.haveForeignGuest ? "true" : "false"}
+                    </p>
                 </div>
                 <div className="w-3/4 py-3">
                     <p className="font-semibold mr-4 mb-4">Booked Rooms</p>
