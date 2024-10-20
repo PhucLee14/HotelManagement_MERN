@@ -48,11 +48,11 @@ const Invoice = () => {
     };
 
     const calculateTotal = (bill, guest) => {
-        const { roomCharge, serviceCharge, discount } = bill;
+        const { roomCharge, serviceCharge, surcharge, discount } = bill;
         if (guest?.guestCategories === "Vip" && discount) {
-            return roomCharge + serviceCharge - discount;
+            return roomCharge + serviceCharge + surcharge + -discount;
         }
-        return roomCharge + serviceCharge;
+        return roomCharge + serviceCharge + surcharge;
     };
 
     const getBill = async (page, keyword = "") => {
