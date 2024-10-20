@@ -50,6 +50,7 @@ const createBooking = async (req, res) => {
             checkout: data.checkout,
             roomInteraction: "Chưa nhận phòng",
             roomBookings: createdRoomBookings,
+            haveForeignGuest: false,
         });
 
         res.status(200).json({

@@ -29,7 +29,7 @@ const EditRegistration = () => {
             setIsLoading(true);
             const data = await viewBooking(id);
             setBooking(data);
-            setHaveForeignGuest(booking.haveForeignGuest);
+            setHaveForeignGuest(data.haveForeignGuest);
             data.roomInteraction === "Chưa nhận phòng"
                 ? setRoomInteraction("Đã nhận phòng")
                 : setRoomInteraction("Đã trả phòng");
@@ -40,6 +40,7 @@ const EditRegistration = () => {
     };
 
     console.log(booking);
+    console.log(booking.haveForeignGuest);
 
     const getServices = async () => {
         try {
@@ -58,10 +59,6 @@ const EditRegistration = () => {
         );
     };
 
-    const handleTest = (e) => {
-        console.log(haveForeignGuest);
-    };
-
     const editDataBooking = async () => {
         try {
             setIsLoading(true);
@@ -71,7 +68,7 @@ const EditRegistration = () => {
                 serviceBooking,
                 haveForeignGuest
             );
-            console.log(data);
+            console.log("haveForeignGuest:", haveForeignGuest);
             if (data.code === 0) {
                 toast.success(data.message);
                 nav("/admin/registration");
@@ -132,7 +129,6 @@ const EditRegistration = () => {
                                 />
                                 <p>Is there a foreign guest?</p>
                             </div>
-                            <button onClick={handleTest}>test</button>
                         </div>
                     ) : (
                         <>
@@ -202,7 +198,6 @@ const EditRegistration = () => {
                             </div>
                         </>
                     )}
-                    {/* <button onClick={handleTest}>test</button> */}
                     <div className="flex flex-col">
                         <Link
                             className="rounded-lg bg-indigo-600 text-white px-4 py-2 mt-4 w-20 text-center"

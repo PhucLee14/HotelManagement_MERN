@@ -18,13 +18,13 @@ const AdminDefaultLayout = ({ children }) => {
     };
     return (
         <div className="flex">
-            <div className="h-screen w-[220px] fixed bg-indigo-600 text-white">
+            <div className="h-screen w-[252px] fixed bg-indigo-600 text-white">
                 <Link
                     to="/admin"
-                    className="h-16 border-b border-slate-400 mx-6 flex justify-center items-center text-lg font-bold tracking-widest"
+                    className="h-16 border-b max-w-full border-slate-400 mx-6 flex justify-center items-center text-lg font-bold tracking-widest"
                 >
-                    <i class="fa-solid fa-buildings mr-4 text-[32px]"></i>
-                    MPP Hotel
+                    <i class="fa-solid fa-buildings mr-4 text-[24px]"></i>
+                    <p className="text-md">Double2P Hotel</p>
                 </Link>
                 <ul>
                     <li>
@@ -106,8 +106,8 @@ const AdminDefaultLayout = ({ children }) => {
                     </li>
                 </ul>
             </div>
-            <div className="ml-[220px] w-full">
-                <div className=" w-[calc(100%-220px)] fixed flex justify-end items-center h-16 shadow-lg bg-white">
+            <div className="ml-[252px] w-full">
+                <div className=" w-[calc(100%-252px)] fixed flex justify-end items-center h-16 shadow-lg bg-white">
                     <div className="mr-8">
                         <i class="fa-solid fa-bell mr-4"></i>
                         <i class="fa-solid fa-envelope"></i>
