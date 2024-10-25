@@ -161,6 +161,8 @@ let editBooking = async (req, res) => {
                 (new Date(booking.checkout) - new Date(booking.checkin)) /
                 (1000 * 60 * 60 * 24);
 
+            let surchargeGuestQuantity = [];
+
             const eachRoomCharges = await Promise.all(
                 booking.roomBookings.map(async (rb) => {
                     const roomBooking = await roomBookingModel.findById(rb);
@@ -168,12 +170,26 @@ let editBooking = async (req, res) => {
                     const roomType = await roomTypeModel.findById(
                         room.roomType
                     );
+                    const headcount = roomBooking.headcount;
+                    let surchargeTemp = 0;
+                    if (headcount >= 3) {
+                        surchargeTemp =
+                            (roomType.price * daysStayed * 15) / 100;
+                    }
+                    surchargeGuestQuantity.push(surchargeTemp);
                     return roomType.price * daysStayed;
                 })
             );
 
             const roomCharge = eachRoomCharges.reduce(
                 (total, charge) => total + charge,
+                0
+            );
+
+            console.log(surchargeGuestQuantity);
+
+            const surchargeQuantity = surchargeGuestQuantity.reduce(
+                (total, surcharge) => total + surcharge,
                 0
             );
 
@@ -194,16 +210,14 @@ let editBooking = async (req, res) => {
                 0
             );
 
-            let surchargeForeignPercent = 0;
-
-            console.log(surchargeForeignPercent, haveForeignGuest);
+            let surchargeForeignGuest = 0;
 
             if (haveForeignGuest) {
-                surchargeForeignPercent = 0.5;
+                surchargeForeignGuest = 0.5;
             }
 
-            const surcharge =
-                (roomCharge + serviceCharge) * surchargeForeignPercent;
+            const surchargeForeign =
+                (roomCharge + serviceCharge) * surchargeForeignGuest;
 
             //Create a new bill
             bill = await billModel.create({
@@ -212,7 +226,8 @@ let editBooking = async (req, res) => {
                 booking: id,
                 roomCharge: roomCharge,
                 serviceCharge: serviceCharge,
-                surcharge: surcharge,
+                surchargeForeign: surchargeForeign,
+                surchargeQuantity: surchargeQuantity,
             });
         }
 

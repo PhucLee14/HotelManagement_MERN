@@ -34,11 +34,25 @@ const InvoiceDetail = () => {
     };
 
     const calculateTotal = () => {
-        const { roomCharge, serviceCharge, surcharge, discount } = bill;
+        const {
+            roomCharge,
+            serviceCharge,
+            surchargeForeign,
+            surchargeQuantity,
+            discount,
+        } = bill;
         if (guest.guestCategories === "Vip" && discount) {
-            return roomCharge + serviceCharge + surcharge - discount;
+            return (
+                roomCharge +
+                serviceCharge +
+                surchargeForeign +
+                surchargeQuantity -
+                discount
+            );
         }
-        return roomCharge + serviceCharge + surcharge;
+        return (
+            roomCharge + serviceCharge + surchargeForeign + surchargeQuantity
+        );
     };
 
     return isLoading ? (
@@ -75,14 +89,30 @@ const InvoiceDetail = () => {
                     <p className="text-gray-500">
                         {bill.serviceCharge
                             ? formatNumber(bill.serviceCharge)
-                            : ""}{" "}
+                            : 0}{" "}
                         VND
                     </p>
                 </div>
                 <div className="flex py-3 border-b">
-                    <p className="font-semibold mr-4">Surcharge: </p>
+                    <p className="font-semibold mr-4">
+                        Surcharge for Quantity:{" "}
+                    </p>
                     <p className="text-gray-500">
-                        {bill.surcharge ? formatNumber(bill.surcharge) : ""} VND
+                        {bill.surchargeQuantity
+                            ? formatNumber(bill.surchargeQuantity)
+                            : 0}{" "}
+                        VND
+                    </p>
+                </div>
+                <div className="flex py-3 border-b">
+                    <p className="font-semibold mr-4">
+                        Surcharge for Foreign Guest:{" "}
+                    </p>
+                    <p className="text-gray-500">
+                        {bill.surchargeForeign
+                            ? formatNumber(bill.surchargeForeign)
+                            : 0}{" "}
+                        VND
                     </p>
                 </div>
                 {guest.guestCategories === "Vip" && bill.discount && (
