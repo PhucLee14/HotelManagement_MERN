@@ -41,6 +41,11 @@ const InvoiceDetail = () => {
             surchargeQuantity,
             discount,
         } = bill;
+        console.log(bill.roomCharge);
+        console.log(bill.serviceCharge);
+        console.log(bill.surchargeForeign);
+        console.log(bill.surchargeQuantity);
+        
         if (guest.guestCategories === "Vip" && discount) {
             return (
                 roomCharge +

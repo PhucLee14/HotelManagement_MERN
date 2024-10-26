@@ -47,12 +47,26 @@ const Invoice = () => {
         }
     };
 
-    const calculateTotal = (bill, guest) => {
-        const { roomCharge, serviceCharge, surcharge, discount } = bill;
-        if (guest?.guestCategories === "Vip" && discount) {
-            return roomCharge + serviceCharge + surcharge + -discount;
+   const calculateTotal = (bills,guests) => {
+        const {
+            roomCharge,
+            serviceCharge,
+            surchargeForeign,
+            surchargeQuantity,
+            discount,
+        } = bills;
+        if (guests.guestCategories === "Vip" && discount) {
+            return (
+                roomCharge +
+                serviceCharge +
+                surchargeForeign +
+                surchargeQuantity -
+                discount
+            );
         }
-        return roomCharge + serviceCharge + surcharge;
+        return (
+            roomCharge + serviceCharge + surchargeForeign + surchargeQuantity
+        );
     };
 
     const getBill = async (page, keyword = "") => {
@@ -149,6 +163,13 @@ const Invoice = () => {
                             const staff = staffs.find(
                                 (s) => s._id === bill.staff
                             );
+                            console.log(bill);
+                            console.log(calculateTotal(bill,guest));
+                            console.log(bill.roomCharge);
+                            console.log(bill.serviceCharge);
+                            console.log(bill.surchargeForeign);
+                            console.log(bill.surchargeQuantity);
+                            
                             return (
                                 <tr
                                     className="border hover:bg-gray-100"

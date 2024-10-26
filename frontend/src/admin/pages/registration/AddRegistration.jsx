@@ -192,7 +192,7 @@ const AddRegistration = () => {
                             <tr className="border border-gray-300">
                                 <th className="py-4">Room Type</th>
                                 <th> Room Number</th>
-                                <th>Quantity</th>
+                                <th>Number Of Client</th>
                                 <th></th>
                             </tr>
                             {booking.roomBookings
@@ -253,7 +253,7 @@ const AddRegistration = () => {
                                 }
                             }}
                         >
-                            Add Rooms
+                            Room Booking
                         </button>
                     </div>
                     <div className="flex flex-col">

@@ -135,11 +135,25 @@ const InvoicePDF = () => {
 
     // Calculate total with discount if applicable
     const calculateTotal = () => {
-        const { roomCharge, serviceCharge, discount } = data.bill;
+        const {
+            roomCharge,
+            serviceCharge,
+            surchargeForeign,
+            surchargeQuantity,
+            discount,
+        } = data.bill;
         if (data.guest.guestCategories === "Vip" && discount) {
-            return roomCharge + serviceCharge - discount;
+            return (
+                roomCharge +
+                serviceCharge +
+                surchargeForeign +
+                surchargeQuantity -
+                discount
+            );
         }
-        return roomCharge + serviceCharge;
+        return (
+            roomCharge + serviceCharge + surchargeForeign + surchargeQuantity
+        );
     };
 
     // Render PDF
@@ -179,7 +193,7 @@ const InvoicePDF = () => {
                     </View>
                     <View style={[styles.section, styles.rightColumn]}>
                         <Text style={styles.title}>Contact</Text>
-                        <Text style={styles.text}>219 To Ngoc Van</Text>
+                        <Text style={styles.text}>218 To Ngoc Van</Text>
                         <Text style={styles.text}>Linh Dong Ward</Text>
                         <Text style={styles.text}>Ho Chi Minh City</Text>
                         <Text style={styles.text}>Phone: 0901092207</Text>
@@ -353,19 +367,25 @@ const InvoicePDF = () => {
                             ]}
                         >
                             <Text style={styles.text}>
-                                Room Charge: {data.bill.roomCharge}
+                                Room Charge: {data.bill.roomCharge} VNĐ
                             </Text>
                             <Text style={styles.text}>
-                                Service Charge: {data.bill.serviceCharge}
+                                Service Charge: {data.bill.serviceCharge} VNĐ
                             </Text>
                             {data.guest.guestCategories === "Vip" &&
                                 data.bill.discount && (
                                     <Text style={styles.text}>
-                                        Discount: {data.bill.discount}
+                                        Discount: {data.bill.discount} VNĐ
                                     </Text>
                                 )}
                             <Text style={styles.text}>
-                                Total: {calculateTotal()}
+                                Surcharge For Quantity: {data.bill.surchargeQuantity} VNĐ
+                            </Text>
+                            <Text style={styles.text}>
+                                Surcharge For Foreign: {data.bill.surchargeForeign} VNĐ
+                            </Text>
+                            <Text style={styles.text}>
+                                Total: {calculateTotal()} VNĐ
                             </Text>
                         </View>
                     </View>
@@ -377,7 +397,7 @@ const InvoicePDF = () => {
                         best of health and wealth.
                     </Text>
                     <Text style={styles.text}>Yours Sincerely,</Text>
-                    <Text style={styles.text}>Hotel MPP</Text>
+                    <Text style={styles.text}>Double2P Hotel</Text>
                 </View>
             </Page>
         </Document>
