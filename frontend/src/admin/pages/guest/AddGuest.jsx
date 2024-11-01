@@ -50,6 +50,7 @@ const AddGuest = () => {
                 <div className="py-2 text-gray-500">
                     <p className="text-gray-500">ID Number</p>
                     <input
+                        id="guest_id"
                         type="text"
                         name="IDnumber"
                         value={guest.IDnumber}
@@ -60,6 +61,7 @@ const AddGuest = () => {
                 <div className="py-2 text-gray-500">
                     <p className="text-gray-500">Guest Name</p>
                     <input
+                        id="guest_name"
                         type="text"
                         name="name"
                         value={guest.name}
@@ -73,7 +75,7 @@ const AddGuest = () => {
                         name="guestCategories"
                         value={guest.guestCategories}
                         onChange={handleChange}
-                        id=""
+                        id="guest_category"
                         className="w-3/4 outline-none rounded-lg p-2 border-gray-300 border mt-2"
                     >
                         <option value="">Normal</option>
@@ -81,12 +83,12 @@ const AddGuest = () => {
                     </select>
                 </div>
                 <div className="py-2 text-gray-500">
-                    <p className="text-gray-500">Guest Category</p>
+                    <p className="text-gray-500">Guest Type</p>
                     <select
                         name="guestType"
                         value={guest.guestType}
                         onChange={handleChange}
-                        id=""
+                        id="guest_type"
                         className="w-3/4 outline-none rounded-lg p-2 border-gray-300 border mt-2"
                     >
                         <option value="">Domestic</option>
@@ -96,6 +98,7 @@ const AddGuest = () => {
                 <div className="py-2 text-gray-500">
                     <p className="text-gray-500">Date Of Birth</p>
                     <input
+                        id="guest_birth"
                         type="date"
                         name="dateOfBirth"
                         value={guest.dateOfBirth}
@@ -106,6 +109,7 @@ const AddGuest = () => {
                 <div className="py-2 text-gray-500">
                     <p className="text-gray-500">Phone Number</p>
                     <input
+                        id="guest_phonenumber"
                         type="text"
                         name="phoneNumber"
                         value={guest.phoneNumber}
@@ -115,6 +119,7 @@ const AddGuest = () => {
                 </div>
                 <div className="flex flex-col">
                     <button
+                        id="submit"
                         onClick={() => {
                             addData();
                         }}

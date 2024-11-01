@@ -63,6 +63,7 @@ const AdminDefaultLayout = ({ children }) => {
                         <Link
                             className="w-full block p-4 font-semibold"
                             to="/admin/guest"
+                            id="guest_page"
                         >
                             <i class="fa-solid fa-people px-2"></i>
                             Guest

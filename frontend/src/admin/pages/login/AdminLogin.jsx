@@ -28,6 +28,7 @@ const AdminLogin = () => {
                             User Name
                         </span>
                         <input
+                            id="username"
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -42,6 +43,7 @@ const AdminLogin = () => {
                             </span>
                         </label>
                         <input
+                            id="password"
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -51,6 +53,7 @@ const AdminLogin = () => {
                     </div>
                     <div>
                         <button
+                            id="submit"
                             type="submit"
                             className="btn btn-block bg-indigo-700 btn-sm mt-2 hover:bg-indigo-400 text-white"
                             onClick={onclickLogin}

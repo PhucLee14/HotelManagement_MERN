@@ -13,7 +13,7 @@ let add = async (req, res) => {
         ) {
             throw {
                 code: 1,
-                message: "Không được bỏ trống thông tin",
+                message: "Please fill all required fields",
             };
         }
         // Kiểm tra tuổi, khách hàng phải đủ 18 tuổi
@@ -26,7 +26,7 @@ let add = async (req, res) => {
         if (age < 18 || (age === 18 && !isBirthdayPassed)) {
             throw {
                 code: 1,
-                message: "Khách hàng phải đủ 18 tuổi",
+                message: "Guest must be at least 18 years old",
             };
         }
 
@@ -35,18 +35,17 @@ let add = async (req, res) => {
         if (!phoneRegex.test(data.phoneNumber)) {
             throw {
                 code: 1,
-                message:
-                    "Số điện thoại không hợp lệ. Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số",
+                message: "Invalid phone number",
             };
         }
 
         // Kiểm tra số IDnumber phải bắt đầu từ số 0 và đủ 12 chữ số
         const idRegex = /^0\d{11}$/;
+        const passportRegex = /^0\d{7}$/;
         if (!idRegex.test(data.IDnumber)) {
             throw {
                 code: 1,
-                message:
-                    "Số CCCD không hợp lệ. Số CCCD phải bắt đầu bằng số 0 và có 12 chữ số",
+                message: "Invalid ID number",
             };
         }
 
@@ -56,7 +55,7 @@ let add = async (req, res) => {
         if (guest) {
             throw {
                 code: 1,
-                message: "Số điện thoại đã tồn tại",
+                message: "Phone number existed",
             };
         }
 
@@ -64,7 +63,7 @@ let add = async (req, res) => {
         if (guest) {
             throw {
                 code: 1,
-                message: "Số CCCD đã tồn tại",
+                message: "ID number existed",
             };
         }
 
@@ -78,13 +77,13 @@ let add = async (req, res) => {
         });
         res.status(200).json({
             code: 0,
-            message: "Tạo khách hàng thành công",
+            message: "Guest information created successfully",
         });
     } catch (error) {
         console.error(error);
         res.status(200).json({
             code: error.code || 1,
-            message: error.message || "Đã có lỗi xảy ra: Logout",
+            message: error.message || "Error: Logout",
         });
     }
 };
@@ -97,7 +96,7 @@ let edit = async (req, res) => {
         if (!id) {
             return res.status(400).json({
                 code: 1,
-                message: "ID không tồn tại",
+                message: "ID number does not exist",
             });
         }
 
@@ -111,7 +110,7 @@ let edit = async (req, res) => {
         ) {
             throw {
                 code: 1,
-                message: "Không được bỏ trống thông tin",
+                message: "Please fill all required fields",
             };
         }
 
@@ -125,7 +124,7 @@ let edit = async (req, res) => {
         if (age < 18 || (age === 18 && !isBirthdayPassed)) {
             throw {
                 code: 1,
-                message: "Khách hàng phải đủ 18 tuổi",
+                message: "Guest must be at least 18 years old",
             };
         }
 
@@ -134,8 +133,7 @@ let edit = async (req, res) => {
         if (!phoneRegex.test(data.phoneNumber)) {
             throw {
                 code: 1,
-                message:
-                    "Số điện thoại không hợp lệ. Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số",
+                message: "Invalid phone number",
             };
         }
 
@@ -144,8 +142,7 @@ let edit = async (req, res) => {
         if (!idRegex.test(data.IDnumber)) {
             throw {
                 code: 1,
-                message:
-                    "Số CCCD không hợp lệ. Số CCCD phải bắt đầu bằng số 0 và có 12 chữ số",
+                message: "Invalid ID number",
             };
         }
         // Kiểm tra xem IDnumber đã tồn tại cho khách hàng khác hay không
@@ -156,7 +153,7 @@ let edit = async (req, res) => {
         if (existingGuestWithID) {
             throw {
                 code: 1,
-                message: "Số CCCD đã tồn tại cho khách hàng khác",
+                message: "Phone number existed",
             };
         }
 
@@ -168,7 +165,7 @@ let edit = async (req, res) => {
         if (existingGuestWithPhone) {
             throw {
                 code: 1,
-                message: "Số điện thoại đã tồn tại cho khách hàng khác",
+                message: "Phone number existed",
             };
         }
 
@@ -190,14 +187,14 @@ let edit = async (req, res) => {
 
         res.status(200).json({
             code: 0,
-            message: "Chỉnh sửa thông tin khách hàng thành công",
+            message: "Guest information updated successfully",
             data: updatedGuest,
         });
     } catch (error) {
         console.error(error);
         res.status(200).json({
             code: error.code || 1,
-            message: error.message || "Đã có lỗi xảy ra: Logout",
+            message: error.message || "Error: Logout",
         });
     }
 };
@@ -227,20 +224,20 @@ let viewListGuest = async (req, res) => {
         if (!guests || guests.length === 0) {
             throw {
                 code: 1,
-                message: "Không có data nào",
+                message: "Data is empty",
             };
         }
 
         res.status(200).json({
             code: 0,
-            message: "Lấy dữ liệu thành công",
+            message: "Data fetched successfully",
             count: count,
             data: guests,
         });
     } catch (error) {
         res.status(200).json({
             code: error.code || 1,
-            message: error.message || "Lỗi: viewListGuest",
+            message: error.message || "Error: viewListGuest",
         });
     }
 };
