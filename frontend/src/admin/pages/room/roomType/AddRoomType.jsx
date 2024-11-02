@@ -160,7 +160,7 @@ const AddRoomType = () => {
                 <div className="py-2 text-gray-500">
                     <p className="text-gray-500">Room Rate</p>
                     <input
-                        type="text"
+                        type="number"
                         name="price"
                         value={roomType.price}
                         onChange={handleChange}
@@ -170,7 +170,7 @@ const AddRoomType = () => {
                 <div className="py-2 text-gray-500">
                     <p className="text-gray-500">Capacity</p>
                     <input
-                        type="text"
+                        type="number"
                         name="capacity"
                         value={roomType.capacity}
                         onChange={handleChange}

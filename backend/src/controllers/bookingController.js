@@ -10,6 +10,8 @@ const billModel = require("../models/billModel");
 const createBooking = async (req, res) => {
     try {
         const data = req.body;
+        console.log(data);
+
         if (
             !data.phoneNumber ||
             !data.checkin ||

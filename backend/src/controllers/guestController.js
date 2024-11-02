@@ -49,21 +49,21 @@ let add = async (req, res) => {
             };
         }
 
+        let guest = await guestModel.findOne({ IDnumber: data.IDnumber });
+        if (guest) {
+            throw {
+                code: 1,
+                message: "ID number existed",
+            };
+        }
+
         // kiểm tra khách hàng đã tồn tại hay chưa
-        let guest = await guestModel.findOne({ phoneNumber: data.phoneNumber });
+        guest = await guestModel.findOne({ phoneNumber: data.phoneNumber });
 
         if (guest) {
             throw {
                 code: 1,
                 message: "Phone number existed",
-            };
-        }
-
-        guest = await guestModel.findOne({ IDnumber: data.IDnumber });
-        if (guest) {
-            throw {
-                code: 1,
-                message: "ID number existed",
             };
         }
 
