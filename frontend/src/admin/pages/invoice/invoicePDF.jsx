@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-    viewListRoomType,
-    viewRoomtype,
-} from "../../../service/roomTypeService";
-import { viewListRoom, viewRoom } from "../../../service/roomService";
+import { viewListRoomType } from "../../../service/roomTypeService";
+import { viewListRoom } from "../../../service/roomService";
 import Loading from "../../../components/loading/Loading";
 import {
     viewBooking,
     viewListRoomBooking,
     viewListServiceBooking,
-    viewRoomBooking,
 } from "../../../service/bookingService";
 import { viewGuest } from "../../../service/guestService";
 import { viewListService } from "../../../service/serviceService";
@@ -379,10 +375,12 @@ const InvoicePDF = () => {
                                     </Text>
                                 )}
                             <Text style={styles.text}>
-                                Surcharge For Quantity: {data.bill.surchargeQuantity} VNĐ
+                                Surcharge For Quantity:{" "}
+                                {data.bill.surchargeQuantity} VNĐ
                             </Text>
                             <Text style={styles.text}>
-                                Surcharge For Foreign: {data.bill.surchargeForeign} VNĐ
+                                Surcharge For Foreign:{" "}
+                                {data.bill.surchargeForeign} VNĐ
                             </Text>
                             <Text style={styles.text}>
                                 Total: {calculateTotal()} VNĐ

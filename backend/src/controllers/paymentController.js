@@ -17,7 +17,7 @@ let payment = async (req, res) => {
     const partnerCode = "MOMO";
     const redirectUrl = URL_FRONTEND;
     const ipnUrl =
-        "https://6f73-2402-800-63b9-c02c-3946-5595-df01-770a.ngrok-free.app/api/payment/callback";
+        "https://d9b5-171-243-49-48.ngrok-free.app/api/payment/callback";
     const requestType = "payWithMethod";
     const orderId = partnerCode + new Date().getTime();
     const requestId = orderId;
