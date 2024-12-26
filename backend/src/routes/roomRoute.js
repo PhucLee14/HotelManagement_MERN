@@ -7,7 +7,7 @@ const router = express.Router();
 // const upload = multer({ storage: storage });
 
 router.post("/add", roomController.add);
-// router.post("/edit", roomTypeController.edit);
+router.post("/edit/:id", roomController.edit);
 // router.post("/delete", roomTypeController.deleteRoomType);
 router.get("/viewListRoom/:currentPage", roomController.viewListRoom);
 // router.get(

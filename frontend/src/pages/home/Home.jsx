@@ -34,28 +34,40 @@ const Home = () => {
                 <p className="text-[52px] font-serif font-semibold">
                     Room & Suites
                 </p>
-                <p className="text-gray-600 w-2/5 mb-12">
+                <p className="text-gray-600 mb-12 text-justify w-4/5 md:w-2/5">
                     Far far away, behind the word mountains, far from the
                     countries Vokalia and Consonantia, there live the blind
                     texts. Separated they live in Bookmarksgrove right at the
                     coast of the Semantics, a large language ocean.
                 </p>
-                <div className="flex w-3/4 justify-between">
-                    <img src={home_3} alt="" className="w-1/3 mx-3 shadow-xl" />
-                    <img src={home_4} alt="" className="w-1/3 mx-3 shadow-xl" />
-                    <img src={home_5} alt="" className="w-1/3 mx-3 shadow-xl" />
+                <div className="flex sm:flex-row flex-col w-5/6 justify-center">
+                    <img
+                        src={home_3}
+                        alt=""
+                        className="sm:w-1/3 mx-3 shadow-xl mb-8"
+                    />
+                    <img
+                        src={home_4}
+                        alt=""
+                        className="sm:w-1/3 mx-3 shadow-xl mb-8"
+                    />
+                    <img
+                        src={home_5}
+                        alt=""
+                        className="sm:w-1/3 mx-3 shadow-xl"
+                    />
                 </div>
             </div>
 
             <div className="flex flex-col items-center mt-16 bg-slate-100 pt-12 pb-16 w-full">
                 <p className="text-[52px] font-serif font-semibold">Photos</p>
-                <p className="text-gray-600 w-2/5 mb-12">
+                <p className="text-gray-600 mb-12 text-justify w-4/5 md:w-2/5">
                     Far far away, behind the word mountains, far from the
                     countries Vokalia and Consonantia, there live the blind
                     texts. Separated they live in Bookmarksgrove right at the
                     coast of the Semantics, a large language ocean.
                 </p>
-                <div className="w-3/5 h-[540px] m-auto py-4 px-2 relative group">
+                <div className="sm:w-3/5 w-4/5 h-[540px] m-auto py-4 relative group">
                     <SLide slides={sliders} />
                 </div>
             </div>
@@ -69,9 +81,9 @@ const Home = () => {
                 <div class="absolute inset-0 bg-black bg-opacity-75"></div>
                 <div className="z-10 flex flex-col items-center text-white">
                     <p className="text-[52px] font-serif font-semibold">
-                        Our Restaurant Menu
+                        The Menu
                     </p>
-                    <p className=" w-2/5 mb-12">
+                    <p className=" mb-12 w-4/5 md:w-2/5">
                         Far far away, behind the word mountains, far from the
                         countries Vokalia and Consonantia, there live the blind
                         texts. Separated they live in Bookmarksgrove right at
@@ -154,13 +166,13 @@ const Home = () => {
 
             <div className="flex flex-col items-center bg-slate-100 py-20 w-full">
                 <p className="text-[52px] font-serif font-semibold">Events</p>
-                <p className="text-gray-600 w-2/5 mb-12">
+                <p className="text-gray-600 mb-12 text-justify w-4/5 sm:w-2/5">
                     Far far away, behind the word mountains, far from the
                     countries Vokalia and Consonantia, there live the blind
                     texts. Separated they live in Bookmarksgrove right at the
                     coast of the Semantics, a large language ocean.
                 </p>
-                <div className="w-3/4 py-4 px-2 flex">
+                <div className="py-4 flex md:flex-row flex-col items-center w-4/5 sm:w-3/4">
                     <EventTag
                         background={slider_1}
                         date="FEBRUARY 26, 2018"

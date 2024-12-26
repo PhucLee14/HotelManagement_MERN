@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const EventTag = ({ background, date, title, content }) => {
     return (
-        <div className="w-96 mx-3">
+        <div className="my-4 sm:mx-3 sm:w-96">
             <Link to="">
                 <img src={background} alt="" className="w-full" />
             </Link>

@@ -5,8 +5,8 @@ import home_2 from "../../assets/images/home_2.jpg";
 const Intro = () => {
     return (
         <div className="flex justify-center bg-slate-100">
-            <div className="w-2/3 flex justify-between items-center mt-14 mb-40">
-                <div className="w-1/3">
+            <div className="w-2/3 justify-between items-center mt-14 mb-40 flex flex-col-reverse xl:flex-row">
+                <div className="w-full xl:w-1/3">
                     <p className="text-[52px] font-serif font-semibold">
                         Welcome!
                     </p>
@@ -25,7 +25,7 @@ const Intro = () => {
                         </button>
                     </div>
                 </div>
-                <div className="w-3/5 relative">
+                <div className="w-full relative mb-12 xl:w-3/5">
                     <div className="">
                         <img
                             src={home_1}
@@ -35,7 +35,7 @@ const Intro = () => {
                         <img
                             src={home_2}
                             alt=""
-                            className="absolute rounded-full w-60 h-60 right-0 border-8 border-slate-100 -translate-y-2/3 translate-x-1/3"
+                            className="absolute rounded-full right-0 border-8 border-slate-100 -translate-y-2/3 translate-x-1/3 w-40 h-40 md:w-60 md:h-60"
                         />
                     </div>
                 </div>

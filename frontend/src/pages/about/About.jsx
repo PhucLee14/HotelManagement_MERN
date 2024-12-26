@@ -53,7 +53,7 @@ const About = () => {
             </div>
             <div className="flex flex-col items-center my-24">
                 <p className="text-[52px] font-serif font-semibold mb-20">
-                    Histroy
+                    History
                 </p>
                 <ul className="timeline timeline-vertical mr-[32%]">
                     <li>

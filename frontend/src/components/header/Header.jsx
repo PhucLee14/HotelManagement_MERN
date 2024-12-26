@@ -21,7 +21,8 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className="">
-                    <ul className="menu menu-horizontal px-1 ">
+                    <div className="md:hidden block">Menu</div>
+                    <ul className="menu menu-horizontal px-1 md:flex hidden">
                         <li className="">
                             <Link className="font-semibold mx-2" to="/">
                                 Home
