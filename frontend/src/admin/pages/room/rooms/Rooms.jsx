@@ -8,7 +8,6 @@ const Rooms = () => {
     const [data, setData] = useState([]);
     const [roomTypes, setRoomTypes] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
         getData();
