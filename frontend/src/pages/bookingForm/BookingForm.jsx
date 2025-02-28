@@ -176,7 +176,7 @@ const BookingForm = () => {
             >
                 <div className="">
                     <Link className="btn btn-ghost text-2xl" to="/">
-                        MPP Hotel
+                        Double2P Hotel
                     </Link>
                 </div>
             </div>
